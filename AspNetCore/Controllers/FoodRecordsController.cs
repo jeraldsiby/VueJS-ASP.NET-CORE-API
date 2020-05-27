@@ -28,7 +28,7 @@ namespace AspNetCore.Controllers
 
         // GET api/foodrecords/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<FoodRecord>> Get(string id)
+        public async Task<ActionResult<FoodRecord>> Get(int id)
         {
             return await _dbContext.FoodRecords.FindAsync(id);
         }
@@ -45,7 +45,7 @@ namespace AspNetCore.Controllers
 
         // PUT api/foodrecords/5
         [HttpPut("{id}")]
-        public async Task<ActionResult> Put(string id, FoodRecord model)
+        public async Task<ActionResult> Put(int id, FoodRecord model)
         {
             var exists = await _dbContext.FoodRecords.AnyAsync(f => f.Id == id);
             if (!exists)
@@ -63,7 +63,7 @@ namespace AspNetCore.Controllers
 
         // DELETE api/foodrecords/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult> Delete(string id)
+        public async Task<ActionResult> Delete(int id)
         {
             var entity = await _dbContext.FoodRecords.FindAsync(id);
 

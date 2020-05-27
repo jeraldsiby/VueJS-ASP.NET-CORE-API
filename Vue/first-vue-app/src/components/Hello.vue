@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <h1>{{ title }}</h1>
-    <h2>Test the CRUD functionalities on ASP.NET CORE WEB API</h2>
+    <h2>Testing the CRUD functionalities on ASP.NET CORE WEB API</h2>
   </div>
 </template>
 
