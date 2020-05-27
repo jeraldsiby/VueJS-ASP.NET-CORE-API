@@ -9,8 +9,8 @@ import Auth from "@okta/okta-vue";
 import Hello from "@/components/Hello";
 
 Vue.use(Auth, {
-  issuer: "https://{dev-715224-admin.okta.com}/oauth2/default",
-  client_id: "{0oad5t3ezzmOlWupK4x6}",
+  issuer: "https://dev-715224.okta.com/oauth2/default",
+  client_id: "0oad5t3ezzmOlWupK4x6",
   redirect_uri: "http://localhost:8080/implicit/callback",
   scope: "openid profile email"
 });
