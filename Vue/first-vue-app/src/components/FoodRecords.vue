@@ -1,6 +1,6 @@
 <template>
   <div class="container-fluid mt-4">
-    <h1 class="h1">Food Records</h1>
+    <h1 class="h1">Records</h1>
     <b-alert :show="loading" variant="info">Loading...</b-alert>
     <b-row>
       <b-col>
@@ -31,9 +31,7 @@
         </table>
       </b-col>
       <b-col lg="3">
-        <b-card
-          :title="model.id ? 'Edit Food ID#' + model.id : 'New Food Record'"
-        >
+        <b-card :title="model.id ? 'Edit Food ID#' + model.id : 'New Record'">
           <form @submit.prevent="createFoodRecord">
             <b-form-group label="Name">
               <b-form-input type="text" v-model="model.name"></b-form-input>
@@ -92,6 +90,7 @@ export default {
     },
     async createFoodRecord() {
       const isUpdate = !!this.model.id;
+      //console.log(this.model.id);
 
       if (isUpdate) {
         await api.update(this.model.id, this.model);
