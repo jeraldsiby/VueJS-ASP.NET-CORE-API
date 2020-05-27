@@ -6,6 +6,7 @@
         <b-navbar-brand to="/">First Vue App</b-navbar-brand>
         <b-collapse is-nav id="nav-collapse">
           <b-navbar-nav>
+            <b-nav-item to="/food-records">Food Records</b-nav-item>
             <b-nav-item href="#" @click.prevent="login" v-if="!user"
               >Login</b-nav-item
             >

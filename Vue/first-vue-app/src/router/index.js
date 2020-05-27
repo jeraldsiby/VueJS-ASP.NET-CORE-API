@@ -4,6 +4,7 @@ import Router from "vue-router";
 
 // 3rd party imports
 import Auth from "@okta/okta-vue";
+import FoodRecords from "@/components/FoodRecords";
 
 // our own imports
 import Hello from "@/components/Hello";
@@ -28,6 +29,14 @@ let router = new Router({
     {
       path: "/implicit/callback",
       component: Auth.handleCallback()
+    },
+    {
+      path: "/food-records",
+      name: "FoodRecords",
+      component: FoodRecords,
+      meta: {
+        requiresAuth: true
+      }
     }
   ]
 });
