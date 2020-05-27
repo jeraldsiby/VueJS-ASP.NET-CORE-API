@@ -1,16 +1,10 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 namespace AspNetCore
 {
@@ -40,6 +34,12 @@ namespace AspNetCore
                                         .WithOrigins("http://localhost:8080");
                                     });
                             });
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                    .AddJwtBearer(options =>
+                                    {
+                                        options.Authority = Configuration["Okta:Authority"];
+                                        options.Audience = "api://default";
+                                    });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -51,8 +51,9 @@ namespace AspNetCore
             }
 
             dbContext.Database.EnsureCreated();
-            app.UseMvc();
             app.UseCors("VueCorsPolicy");
+            app.UseAuthentication();
+            app.UseMvc();
         }
     }
 }

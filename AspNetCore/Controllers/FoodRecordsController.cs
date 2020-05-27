@@ -1,12 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using AspNetCore.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace AspNetCore.Controllers
 {
     [Route("api/[controller]")]
+    [Authorize]
     [ApiController]
     public class FoodRecordsController : ControllerBase
     {
