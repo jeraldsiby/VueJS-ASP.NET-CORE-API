@@ -34,12 +34,12 @@ namespace AspNetCore
                                         .WithOrigins("http://localhost:8080");
                                     });
                             });
-            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                    .AddJwtBearer(options =>
-                                    {
-                                        options.Authority = Configuration["Okta:Authority"];
-                                        options.Audience = "api://default";
-                                    });
+            // services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+            //         .AddJwtBearer(options =>
+            //                         {
+            //                             options.Authority = Configuration["Okta:Authority"];
+            //                             options.Audience = "api://default";
+            //                         });
             services.AddMvc(option => option.EnableEndpointRouting = false);
         }
 
@@ -51,9 +51,10 @@ namespace AspNetCore
                 app.UseDeveloperExceptionPage();
             }
 
-            dbContext.Database.EnsureCreated();
             app.UseCors("VueCorsPolicy");
-            app.UseAuthentication();
+            dbContext.Database.EnsureCreated();
+
+            //app.UseAuthentication();
             app.UseMvc();
         }
     }

@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 namespace AspNetCore.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize]
+    // [Authorize]
     [ApiController]
     public class FoodRecordsController : ControllerBase
     {
@@ -37,6 +37,7 @@ namespace AspNetCore.Controllers
         [HttpPost]
         public async Task Post(FoodRecord model)
         {
+            //model.DateTime = System.DateTime.Now;
             await _dbContext.AddAsync(model);
 
             await _dbContext.SaveChangesAsync();
