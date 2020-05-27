@@ -10,7 +10,7 @@
               <th>ID</th>
               <th>Name</th>
               <th>Value</th>
-              <th>Date Time</th>
+              <!-- <th>Date Time</th>  -->
               <th>&nbsp;</th>
             </tr>
           </thead>
@@ -19,7 +19,7 @@
               <td>{{ record.id }}</td>
               <td>{{ record.name }}</td>
               <td>{{ record.value }}</td>
-              <td>{{ record.dateTime }}</td>
+              <!-- <td>{{ record.dateTime }}</td> -->
               <td class="text-right">
                 <a href="#" @click.prevent="updateFoodRecord(record)">Edit</a> -
                 <a href="#" @click.prevent="deleteFoodRecord(record.id)"
@@ -42,16 +42,16 @@
               <b-form-input
                 rows="4"
                 v-model="model.value"
-                type="number"
+                type="text"
               ></b-form-input>
             </b-form-group>
-            <b-form-group label="Date Time">
+            <!-- <b-form-group label="Date Time">
               <b-form-input
                 rows="4"
                 v-model="model.dateTime"
                 type="datetime-local"
               ></b-form-input>
-            </b-form-group>
+            </b-form-group> -->
             <div>
               <b-btn type="submit" variant="success">Save Record</b-btn>
             </div>
