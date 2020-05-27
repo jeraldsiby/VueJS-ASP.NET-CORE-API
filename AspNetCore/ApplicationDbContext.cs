@@ -9,6 +9,6 @@ namespace AspNetCore
         {
 
         }
-        public DbSet<FoodRecord> foodRecords { get; set; }
+        public DbSet<FoodRecord> FoodRecords { get; set; }
     }
 }

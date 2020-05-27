@@ -29,6 +29,17 @@ namespace AspNetCore
             services.AddControllers();
             var connectionString = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlite(connectionString));
+            services.AddCors(options =>
+                            {
+                                options.AddPolicy("VueCorsPolicy", builder =>
+                                    {
+                                        builder
+                                        .AllowAnyHeader()
+                                        .AllowAnyMethod()
+                                        .AllowCredentials()
+                                        .WithOrigins("http://localhost:8080");
+                                    });
+                            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -41,6 +52,7 @@ namespace AspNetCore
 
             dbContext.Database.EnsureCreated();
             app.UseMvc();
+            app.UseCors("VueCorsPolicy");
         }
     }
 }
